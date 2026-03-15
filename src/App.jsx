@@ -66,11 +66,11 @@ const PROJECTS = [
 ];
 
 const EXPERIENCE = [
-  { role: "Data Scientist", company: "LVMH — Maison Loewe", period: "Jan 2026 — Jun 2026", type: "Corporate Research Project",
+  { role: "Data Scientist", company: "LVMH — Maison Loewe", period: "Jan 2026 — Jun 2026", type: "Corporate Research Project", logo: "/logos/lvmh.png",
     detail: "Engineering a semantic data pipeline for a fragrance recommendation system for 100+ products, with metadata tagging, multi-dimensional attribute extraction (olfactory notes, mood, occasion), and embedding generation to produce structured, retrieval-ready datasets using FAISS with metadata pre-filtering.\n\nBuilding a two-stage RAG retrieval system combining vector similarity search over fragrance embeddings with cross-encoder reranking, delivering ranked personalized recommendations, and designing a conversational AI chatbot grounded in verified product metadata for brand-aligned responses." },
-  { role: "Data Analyst", company: "NITI Aayog — Government of India", period: "Jun 2025 — Aug 2025", type: "Policy Think Tank",
+  { role: "Data Analyst", company: "NITI Aayog — Government of India", period: "Jun 2025 — Aug 2025", type: "Policy Think Tank", logo: "/logos/niti.png",
     detail: "Defined and implemented KPIs to monitor performance of 10,000+ schools, built interactive Looker Studio dashboards. Designed advanced analytics frameworks including a weighted scoring algorithm and 4-tier classification system to evaluate government intervention impact." },
-  { role: "Financial Markets Analyst", company: "Futures First, Hertshten Group", period: "Jun 2022 — Aug 2022", type: "Financial Analytics",
+  { role: "Financial Markets Analyst", company: "Futures First, Hertshten Group", period: "Jun 2022 — Aug 2022", type: "Financial Analytics", logo: "/logos/futuresfirst.png",
     detail: "Developed a dynamic financial reporting tracker in Excel/Google Sheets to monitor and visualize key risk KPIs, including periodic returns, volatility, P/E ratio, Beta, P/B ratio, dividend yield, and covariance matrix for Nifty 50 companies, enabling regular performance reporting for portfolio analysis.\n\nBuilt a Python-based ad-hoc reporting tool using Numpy and Pandas to compute portfolio volatility, allowing dynamic inputs for company selection and portfolio weights, supporting precise risk assessment and data-driven decision-making." },
 ];
 
@@ -81,9 +81,9 @@ const SKILLS_GROUPS = [
 ];
 
 const EDUCATION_DATA = [
-  { year: "2024 — 2026", degree: "MSc Data Sciences & Business Analytics", school: "CentraleSupélec × ESSEC Business School, Paris", note: "Machine Learning · Deep Learning · Big Data · Predictive Analysis" },
-  { year: "2023 — 2024", degree: "Diploma in Data Science", school: "Indian Institute of Technology, Madras", note: "Linear Algebra · ML Foundation & Theory · DBMS" },
-  { year: "2020 — 2023", degree: "BA (Hons) Economics", school: "O.P. Jindal Global University, Sonipat", note: "Silver Medalist (2/98) · Econometrics · Statistics · Macroeconomics" },
+  { year: "2024 — 2026", degree: "MSc Data Sciences & Business Analytics", school: "CentraleSupélec × ESSEC Business School, Paris", note: "Machine Learning · Deep Learning · Big Data · Predictive Analysis", logo: "/logos/centralesupelec.jpg" },
+  { year: "2023 — 2024", degree: "Diploma in Data Science", school: "Indian Institute of Technology, Madras", note: "Linear Algebra · ML Foundation & Theory · DBMS", logo: "/logos/iitm.png" },
+  { year: "2020 — 2023", degree: "BA (Hons) Economics", school: "O.P. Jindal Global University, Sonipat", note: "Silver Medalist (2/98) · Econometrics · Statistics · Macroeconomics", logo: "/logos/jindal.png" },
 ];
 
 const HOBBIES = ["Tennis", "Odissi", "Baking", "Leadership", "Mentoring", "Community Building"];
@@ -107,7 +107,7 @@ function Sidebar({ active, onNavigate, onCVClick }) {
     <aside style={{
       position: "fixed", left: 0, top: 0, bottom: 0, width: 250,
       background: c.surface, borderRight: `1px solid ${c.border}`,
-      display: "flex", flexDirection: "column", padding: "36px 0",
+      display: "flex", flexDirection: "column", padding: "24px 0",
       zIndex: 100, overflowY: "auto",
     }}>
       {/* Profile */}
@@ -188,24 +188,24 @@ function HomePage() {
 
   return (
     <div style={{ maxWidth: 780 }}>
-      <div style={{ marginBottom: 56 }}>
+      <div style={{ marginBottom: 36 }}>
         <div style={{
           fontFamily: f.heading, fontWeight: 700,
-          fontSize: "clamp(34px, 5vw, 56px)", lineHeight: 1.1,
+          fontSize: "clamp(28px, 4vw, 44px)", lineHeight: 1.1,
           color: c.white, letterSpacing: "-1px", ...anim(0.1),
         }}>
           Hello World ! It's <span style={{ color: c.gold }}>Mods.</span>
         </div>
         <h1 style={{
           fontFamily: f.heading, fontWeight: 700,
-          fontSize: "clamp(20px, 3vw, 28px)", lineHeight: 1.3,
-          color: c.white, margin: "14px 0 0", letterSpacing: "-0.5px", ...anim(0.25),
+          fontSize: "clamp(18px, 2.5vw, 24px)", lineHeight: 1.3,
+          color: c.white, margin: "10px 0 0", letterSpacing: "-0.5px", ...anim(0.25),
         }}>
           Modhura <span style={{ color: c.gold }}>Das</span>
         </h1>
         <p style={{
-          fontFamily: f.body, fontSize: 15, lineHeight: 1.8,
-          color: c.muted, maxWidth: 540, margin: "18px 0 0",
+          fontFamily: f.body, fontSize: 13, lineHeight: 1.7,
+          color: c.muted, maxWidth: 540, margin: "14px 0 0",
           fontStyle: "italic", ...anim(0.4),
         }}>
           From running regressions in Economics to building RAG pipelines, ML models, and orchestrating AI agents. The learning curve was worth it.
@@ -213,15 +213,15 @@ function HomePage() {
       </div>
 
       {/* Photo + About */}
-      <div style={{ display: "flex", gap: 44, alignItems: "flex-start", ...anim(0.55) }}>
+      <div style={{ display: "flex", gap: 32, alignItems: "flex-start", ...anim(0.55) }}>
         <div style={{
-          width: 180, height: 180, borderRadius: "50%", overflow: "hidden",
-          border: "3px solid rgba(201,169,110,0.3)", flexShrink: 0,
+          width: 140, height: 140, borderRadius: "50%", overflow: "hidden",
+          border: "2px solid rgba(201,169,110,0.3)", flexShrink: 0,
         }}>
           <img src="/profile.png" alt="Modhura Das" style={{ width: "100%", height: "100%", objectFit: "cover" }}
             onError={(e) => { e.target.parentElement.style.background = "rgba(201,169,110,0.1)"; e.target.style.display = "none"; }} />
         </div>
-        <div style={{ fontFamily: f.body, fontSize: 14, lineHeight: 1.9, color: c.white }}>
+        <div style={{ fontFamily: f.body, fontSize: 13, lineHeight: 1.8, color: c.white }}>
           <p style={{ margin: "0 0 18px" }}>
             I'm a current M2 student in the MSc Data Sciences &amp; Business Analytics program at CentraleSupélec × ESSEC in Paris, France. I'm working as a Data Scientist at LVMH's Maison Loewe, building an AI-powered fragrance recommendation chatbot using retrieval-augmented generation (RAG), intent classification, and LLM-based response generation with LangChain and Google Gemini. Over the summer I interned at NITI Aayog (Government of India's policy think tank) where I measured government intervention impact across 10,000+ schools through data-driven KPI frameworks.
           </p>
@@ -241,9 +241,9 @@ function ProjectsPage() {
 
   return (
     <div style={{ maxWidth: 780 }}>
-      <div style={{ fontFamily: f.mono, fontSize: 11, textTransform: "uppercase", letterSpacing: "4px", color: c.gold, marginBottom: 14 }}>Selected Work</div>
-      <h2 style={{ fontFamily: f.heading, fontSize: 34, fontWeight: 700, color: c.white, margin: "0 0 44px", letterSpacing: "-1px" }}>Projects</h2>
-      <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+      <div style={{ fontFamily: f.mono, fontSize: 10, textTransform: "uppercase", letterSpacing: "4px", color: c.gold, marginBottom: 10 }}>Selected Work</div>
+      <h2 style={{ fontFamily: f.heading, fontSize: 28, fontWeight: 700, color: c.white, margin: "0 0 28px", letterSpacing: "-1px" }}>Projects</h2>
+      <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
         {PROJECTS.map(p => <ProjectCard key={p.id} project={p} onClick={() => setSelected(p)} />)}
       </div>
     </div>
@@ -256,7 +256,7 @@ function ProjectCard({ project, onClick }) {
     <div onClick={onClick} onMouseEnter={() => setH(true)} onMouseLeave={() => setH(false)}
       style={{
         border: `1px solid ${h ? "rgba(201,169,110,0.3)" : c.border}`,
-        padding: "30px 32px", cursor: "pointer", position: "relative", overflow: "hidden",
+        padding: "20px 24px", cursor: "pointer", position: "relative", overflow: "hidden",
         transition: "all 0.4s cubic-bezier(0.16,1,0.3,1)",
         background: h ? "rgba(201,169,110,0.03)" : "transparent",
       }}>
@@ -277,10 +277,10 @@ function ProjectCard({ project, onClick }) {
           <div style={{ fontFamily: f.mono, fontSize: 9, textTransform: "uppercase", letterSpacing: "1.5px", color: c.gold, padding: "4px 10px", border: "1px solid rgba(201,169,110,0.25)", background: "rgba(201,169,110,0.06)" }}>{project.highlight}</div>
         )}
       </div>
-      <div style={{ fontFamily: f.mono, fontSize: 10, textTransform: "uppercase", letterSpacing: "2px", color: c.muted, marginBottom: 10 }}>{project.tag}</div>
-      <h3 style={{ fontFamily: f.heading, fontSize: 22, fontWeight: 700, color: c.white, margin: "0 0 4px" }}>{project.title}</h3>
-      <div style={{ fontFamily: f.body, fontSize: 13, color: c.gold, marginBottom: 14 }}>{project.org}</div>
-      <p style={{ fontFamily: f.body, fontSize: 13, lineHeight: 1.8, color: c.text, margin: "0 0 18px", maxWidth: 540 }}>{project.description}</p>
+      <div style={{ fontFamily: f.mono, fontSize: 9, textTransform: "uppercase", letterSpacing: "2px", color: c.muted, marginBottom: 6 }}>{project.tag}</div>
+      <h3 style={{ fontFamily: f.heading, fontSize: 19, fontWeight: 700, color: c.white, margin: "0 0 3px" }}>{project.title}</h3>
+      <div style={{ fontFamily: f.body, fontSize: 12, color: c.gold, marginBottom: 10 }}>{project.org}</div>
+      <p style={{ fontFamily: f.body, fontSize: 12, lineHeight: 1.7, color: c.text, margin: "0 0 12px", maxWidth: 540 }}>{project.description}</p>
       <div style={{ display: "flex", flexWrap: "wrap", gap: 6, alignItems: "center" }}>
         {project.tech.map(t => <span key={t} style={{ fontFamily: f.mono, fontSize: 9, padding: "4px 10px", border: `1px solid ${c.border}`, color: c.text }}>{t}</span>)}
         <span style={{ fontFamily: f.mono, fontSize: 9, color: c.gold, marginLeft: 8, opacity: h ? 1 : 0, transition: "opacity 0.3s", letterSpacing: "1px" }}>VIEW DETAILS →</span>
@@ -292,7 +292,7 @@ function ProjectCard({ project, onClick }) {
 
 function ProjectDetail({ project, onBack }) {
   const label = { fontFamily: f.mono, fontSize: 10, textTransform: "uppercase", letterSpacing: "2px", color: c.gold, marginBottom: 10, marginTop: 30 };
-  const body = { fontFamily: f.body, fontSize: 14, lineHeight: 1.85, color: c.text, whiteSpace: "pre-line" };
+  const body = { fontFamily: f.body, fontSize: 13, lineHeight: 1.75, color: c.text, whiteSpace: "pre-line" };
 
   return (
     <div style={{ maxWidth: 780 }}>
@@ -357,18 +357,17 @@ function ExperiencePage() {
   return (
     <div style={{ maxWidth: 780 }}>
       <div style={{ fontFamily: f.mono, fontSize: 11, textTransform: "uppercase", letterSpacing: "4px", color: c.gold, marginBottom: 14 }}>Experience</div>
-      <h2 style={{ fontFamily: f.heading, fontSize: 34, fontWeight: 700, color: c.white, margin: "0 0 44px", letterSpacing: "-1px" }}>Where I've Worked</h2>
+      <h2 style={{ fontFamily: f.heading, fontSize: 28, fontWeight: 700, color: c.white, margin: "0 0 28px", letterSpacing: "-1px" }}>Where I've Worked</h2>
 
       {EXPERIENCE.map((exp, i) => (
-        <div key={i} style={{ padding: "28px 0", borderBottom: `1px solid ${c.border}`, display: "grid", gridTemplateColumns: "170px 1fr", gap: 32, alignItems: "start" }}>
+        <div key={i} style={{ padding: "22px 0", borderBottom: `1px solid ${c.border}`, display: "grid", gridTemplateColumns: "170px 1fr", gap: 32, alignItems: "start" }}>
           <div>
             {/* Company logo placeholder */}
             <div style={{
-              width: 44, height: 44, borderRadius: 8, marginBottom: 10,
+              width: 36, height: 36, borderRadius: 6, marginBottom: 8,
               background: "rgba(201,169,110,0.06)", border: `1px solid ${c.border}`,
-              display: "flex", alignItems: "center", justifyContent: "center",
-              fontFamily: f.heading, fontSize: 16, color: c.gold, fontWeight: 700,
-            }}>{exp.company.charAt(0)}</div>
+              overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center",
+            }}><img src={exp.logo} alt={exp.company} style={{ width: "100%", height: "100%", objectFit: "contain" }} /></div>
             <div style={{ fontFamily: f.mono, fontSize: 11, color: c.muted, letterSpacing: "1px" }}>{exp.period}</div>
             <div style={{ fontFamily: f.mono, fontSize: 9, textTransform: "uppercase", letterSpacing: "1.5px", color: "rgba(201,169,110,0.5)", marginTop: 5 }}>{exp.type}</div>
           </div>
@@ -381,9 +380,9 @@ function ExperiencePage() {
       ))}
 
       {/* Tech Stack */}
-      <div style={{ marginTop: 64 }}>
+      <div style={{ marginTop: 48 }}>
         <div style={{ fontFamily: f.mono, fontSize: 11, textTransform: "uppercase", letterSpacing: "4px", color: c.gold, marginBottom: 14 }}>Skills</div>
-        <h2 style={{ fontFamily: f.heading, fontSize: 34, fontWeight: 700, color: c.white, margin: "0 0 36px", letterSpacing: "-1px" }}>Technical Stack</h2>
+        <h2 style={{ fontFamily: f.heading, fontSize: 28, fontWeight: 700, color: c.white, margin: "0 0 24px", letterSpacing: "-1px" }}>Technical Stack</h2>
         <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
           {SKILLS_GROUPS.map(g => (
             <div key={g.category}>
@@ -404,17 +403,16 @@ function EducationPage() {
   return (
     <div style={{ maxWidth: 780 }}>
       <div style={{ fontFamily: f.mono, fontSize: 11, textTransform: "uppercase", letterSpacing: "4px", color: c.gold, marginBottom: 14 }}>Education</div>
-      <h2 style={{ fontFamily: f.heading, fontSize: 34, fontWeight: 700, color: c.white, margin: "0 0 44px", letterSpacing: "-1px" }}>My Educational Journey</h2>
+      <h2 style={{ fontFamily: f.heading, fontSize: 28, fontWeight: 700, color: c.white, margin: "0 0 28px", letterSpacing: "-1px" }}>My Educational Journey</h2>
 
       {EDUCATION_DATA.map((edu, i) => (
-        <div key={i} style={{ padding: "32px 0", borderBottom: `1px solid ${c.border}`, display: "flex", gap: 20, alignItems: "flex-start" }}>
+        <div key={i} style={{ padding: "24px 0", borderBottom: `1px solid ${c.border}`, display: "flex", gap: 20, alignItems: "flex-start" }}>
           {/* Logo placeholder */}
           <div style={{
-            width: 52, height: 52, borderRadius: 10, flexShrink: 0,
+            width: 40, height: 40, borderRadius: 8, flexShrink: 0,
             background: "rgba(201,169,110,0.06)", border: `1px solid ${c.border}`,
-            display: "flex", alignItems: "center", justifyContent: "center",
-            fontFamily: f.heading, fontSize: 18, color: c.gold, fontWeight: 700,
-          }}>{edu.degree.charAt(0)}</div>
+            overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center",
+          }}><img src={edu.logo} alt={edu.school} style={{ width: "100%", height: "100%", objectFit: "contain" }} /></div>
           <div>
             <div style={{ fontFamily: f.mono, fontSize: 12, color: c.gold, letterSpacing: "2px", fontWeight: 500, marginBottom: 6 }}>{edu.year}</div>
             <h3 style={{ fontFamily: f.heading, fontSize: 21, fontWeight: 700, color: c.white, margin: 0 }}>{edu.degree}</h3>
@@ -430,24 +428,24 @@ function EducationPage() {
 /* ─── PAGE: HOBBIES & MORE ─── */
 function HobbiesPage() {
   const picPlaceholder = {
-    width: 120, height: 120, borderRadius: 8, flexShrink: 0,
+    width: 90, height: 90, borderRadius: 8, flexShrink: 0,
     background: "rgba(201,169,110,0.06)", border: `1px solid ${c.border}`,
     display: "flex", alignItems: "center", justifyContent: "center",
-    fontFamily: f.mono, fontSize: 9, color: c.faint, textAlign: "center", padding: 8,
+    fontFamily: f.mono, fontSize: 8, color: c.faint, textAlign: "center", padding: 6,
   };
 
   return (
     <div style={{ maxWidth: 780 }}>
       <div style={{ fontFamily: f.mono, fontSize: 11, textTransform: "uppercase", letterSpacing: "4px", color: c.gold, marginBottom: 14 }}>Beyond the Code</div>
-      <h2 style={{ fontFamily: f.heading, fontSize: 34, fontWeight: 700, color: c.white, margin: "0 0 48px", letterSpacing: "-1px" }}>Hobbies & Soft Skills</h2>
+      <h2 style={{ fontFamily: f.heading, fontSize: 28, fontWeight: 700, color: c.white, margin: "0 0 28px", letterSpacing: "-1px" }}>Hobbies & Soft Skills</h2>
 
       {/* Section 1: Leadership & Teaching */}
       <div style={{ display: "flex", gap: 28, alignItems: "flex-start", marginBottom: 28 }}>
         <div style={{ display: "flex", flexDirection: "column", gap: 12, flexShrink: 0 }}>
-          <div style={picPlaceholder}>Photo placeholder</div>
-          <div style={picPlaceholder}>Photo placeholder</div>
+          <div style={{ ...picPlaceholder, overflow: "hidden", padding: 0 }}><img src="/hobbies/mentoring.png" alt="Mentoring" style={{ width: "100%", height: "100%", objectFit: "cover" }} /></div>
+          <div style={{ ...picPlaceholder, overflow: "hidden", padding: 0 }}><img src="/hobbies/community.png" alt="Community" style={{ width: "100%", height: "100%", objectFit: "cover" }} /></div>
         </div>
-        <div style={{ fontFamily: f.body, fontSize: 14, lineHeight: 1.85, color: c.text }}>
+        <div style={{ fontFamily: f.body, fontSize: 13, lineHeight: 1.75, color: c.text }}>
           <p style={{ margin: "0 0 16px" }}>
             I've always gravitated toward roles where I can bring people together. As Class Representative and Head of the Academic Coordination Committee during my undergrad years, I organized coffee sessions with professors, peer workshops, and study groups — creating spaces where people could learn from each other without pressure. I enjoyed being the representative voice of a very diverse student community and the bridge between the administration and the student body. All my initiatives have been centered around a strong belief: if you're lucky enough to reach the top, it's your duty to send the lift back down.
           </p>
@@ -457,22 +455,22 @@ function HobbiesPage() {
         </div>
       </div>
 
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 48 }}>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 32 }}>
         {["Leadership", "Mentoring", "Community Building", "Teaching"].map(h => (
           <span key={h} style={{ fontFamily: f.body, fontSize: 13, padding: "8px 20px", border: "1px solid rgba(201,169,110,0.2)", color: c.text }}>{h}</span>
         ))}
       </div>
 
       {/* Divider */}
-      <div style={{ height: 2, background: c.gold, opacity: 0.45, marginBottom: 48 }} />
+      <div style={{ height: 2, background: c.gold, opacity: 0.45, marginBottom: 32 }} />
 
       {/* Section 2: Sports, Dance, Baking */}
       <div style={{ display: "flex", gap: 28, alignItems: "flex-start", marginBottom: 28 }}>
         <div style={{ display: "flex", flexDirection: "column", gap: 12, flexShrink: 0 }}>
-          <div style={picPlaceholder}>Photo placeholder</div>
-          <div style={picPlaceholder}>Photo placeholder</div>
+          <div style={{ ...picPlaceholder, overflow: "hidden", padding: 0 }}><img src="/hobbies/tennis.jpg" alt="Tennis" style={{ width: "100%", height: "100%", objectFit: "cover" }} /></div>
+          <div style={{ ...picPlaceholder, overflow: "hidden", padding: 0 }}><img src="/hobbies/odissi.png" alt="Odissi" style={{ width: "100%", height: "100%", objectFit: "cover" }} /></div>
         </div>
-        <div style={{ fontFamily: f.body, fontSize: 14, lineHeight: 1.85, color: c.text }}>
+        <div style={{ fontFamily: f.body, fontSize: 13, lineHeight: 1.75, color: c.text }}>
           <p style={{ margin: "0 0 16px" }}>
             Outside of work, you'll most likely find me on a tennis court. I enjoy racquet sports because of the strategy and quick decision-making they demand. I'm also an avid cricket fan and often spend weekends wearing the blues and cheering for India. Playing sports has played a huge role in shaping who I am — it has taught me discipline, humility, and team spirit, values I carry into every aspect of my life.
           </p>
@@ -606,7 +604,7 @@ export default function Portfolio() {
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
       `}</style>
       <Sidebar active={page} onNavigate={setPage} onCVClick={() => setShowCV(true)} />
-      <main style={{ marginLeft: 250, minHeight: "100vh", padding: "56px 56px 72px" }}>
+      <main style={{ marginLeft: 250, minHeight: "100vh", padding: "36px 48px 56px" }}>
         <Page />
         <div style={{ marginTop: 72, paddingTop: 20, borderTop: `1px solid ${c.border}`, fontFamily: f.mono, fontSize: 9, color: c.faint, letterSpacing: "1px" }}>
           © 2026 Modhura Das — Designed with intention
