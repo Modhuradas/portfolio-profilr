@@ -93,7 +93,7 @@ const f = { heading: "'Playfair Display', serif", mono: "'JetBrains Mono', monos
 const c = { bg: "#08080c", surface: "#0e0e14", gold: "#c9a96e", white: "#e8e4df", text: "rgba(232,228,223,0.75)", muted: "rgba(232,228,223,0.5)", faint: "rgba(232,228,223,0.3)", border: "rgba(255,255,255,0.06)" };
 
 /* ─── SIDEBAR ─── */
-function Sidebar({ active, onNavigate, onCVClick }) {
+function Sidebar({ active, onNavigate, onCVClick, mobileOpen, onToggleMobile }) {
   const navItems = [
     { id: "home", label: "Home" },
     { id: "projects", label: "Projects" },
@@ -104,11 +104,26 @@ function Sidebar({ active, onNavigate, onCVClick }) {
   ];
 
   return (
-    <aside style={{
-      position: "fixed", left: 0, top: 0, bottom: 0, width: 250,
+    <>
+      {/* Mobile hamburger */}
+      <button className="mobile-menu-btn" onClick={() => onToggleMobile(!mobileOpen)} style={{
+        position: "fixed", top: 12, left: 12, zIndex: 200,
+        background: c.surface, border: `1px solid ${c.border}`,
+        color: c.white, width: 38, height: 38, fontSize: 18,
+        display: "none", alignItems: "center", justifyContent: "center",
+        cursor: "pointer", borderRadius: 6,
+      }}>{mobileOpen ? "×" : "☰"}</button>
+
+      {mobileOpen && <div className="mobile-overlay" onClick={() => onToggleMobile(false)} style={{
+        position: "fixed", inset: 0, background: "rgba(0,0,0,0.5)", zIndex: 99,
+      }} />}
+
+      <aside className={`sidebar ${mobileOpen ? "sidebar-open" : ""}`} style={{
+      position: "fixed", left: 0, top: 0, bottom: 0, width: 220,
       background: c.surface, borderRight: `1px solid ${c.border}`,
       display: "flex", flexDirection: "column", padding: "24px 0",
       zIndex: 100, overflowY: "auto",
+      transition: "transform 0.3s ease",
     }}>
       {/* Profile */}
       <div style={{ padding: "0 24px 28px", borderBottom: `1px solid ${c.border}` }}>
@@ -129,7 +144,7 @@ function Sidebar({ active, onNavigate, onCVClick }) {
       {/* Nav */}
       <nav style={{ padding: "16px 0", flex: 1 }}>
         {navItems.map(item => (
-          <button key={item.id} onClick={() => onNavigate(item.id)} style={{
+          <button key={item.id} onClick={() => { onNavigate(item.id); if(onToggleMobile) onToggleMobile(false); }} style={{
             display: "block", width: "100%", padding: "11px 24px",
             border: "none", cursor: "pointer", textAlign: "left",
             background: active === item.id ? "rgba(201,169,110,0.08)" : "transparent",
@@ -171,7 +186,8 @@ function Sidebar({ active, onNavigate, onCVClick }) {
           >{s.label} ↗</a>
         ))}
       </div>
-    </aside>
+      </aside>
+    </>
   );
 }
 
@@ -213,7 +229,7 @@ function HomePage() {
       </div>
 
       {/* Photo + About */}
-      <div style={{ display: "flex", gap: 32, alignItems: "flex-start", ...anim(0.55) }}>
+      <div className="home-about-grid" style={{ display: "flex", gap: 32, alignItems: "flex-start", ...anim(0.55) }}>
         <div style={{
           width: 140, height: 140, borderRadius: "50%", overflow: "hidden",
           border: "2px solid rgba(201,169,110,0.3)", flexShrink: 0,
@@ -360,7 +376,7 @@ function ExperiencePage() {
       <h2 style={{ fontFamily: f.heading, fontSize: 28, fontWeight: 700, color: c.white, margin: "0 0 28px", letterSpacing: "-1px" }}>Where I've Worked</h2>
 
       {EXPERIENCE.map((exp, i) => (
-        <div key={i} style={{ padding: "22px 0", borderBottom: `1px solid ${c.border}`, display: "grid", gridTemplateColumns: "170px 1fr", gap: 32, alignItems: "start" }}>
+        <div key={i} className="exp-grid" style={{ padding: "22px 0", borderBottom: `1px solid ${c.border}`, display: "grid", gridTemplateColumns: "170px 1fr", gap: 32, alignItems: "start" }}>
           <div>
             {/* Company logo placeholder */}
             <div style={{
@@ -440,7 +456,7 @@ function HobbiesPage() {
       <h2 style={{ fontFamily: f.heading, fontSize: 28, fontWeight: 700, color: c.white, margin: "0 0 28px", letterSpacing: "-1px" }}>Hobbies & Soft Skills</h2>
 
       {/* Section 1: Leadership & Teaching */}
-      <div style={{ display: "flex", gap: 28, alignItems: "flex-start", marginBottom: 28 }}>
+      <div className="hobbies-section" style={{ display: "flex", gap: 28, alignItems: "flex-start", marginBottom: 28 }}>
         <div style={{ display: "flex", flexDirection: "column", gap: 12, flexShrink: 0 }}>
           <div style={{ ...picPlaceholder, overflow: "hidden", padding: 0 }}><img src="/hobbies/mentoring.png" alt="Mentoring" style={{ width: "100%", height: "100%", objectFit: "cover" }} /></div>
           <div style={{ ...picPlaceholder, overflow: "hidden", padding: 0 }}><img src="/hobbies/community.png" alt="Community" style={{ width: "100%", height: "100%", objectFit: "cover" }} /></div>
@@ -465,7 +481,7 @@ function HobbiesPage() {
       <div style={{ height: 2, background: c.gold, opacity: 0.45, marginBottom: 32 }} />
 
       {/* Section 2: Sports, Dance, Baking */}
-      <div style={{ display: "flex", gap: 28, alignItems: "flex-start", marginBottom: 28 }}>
+      <div className="hobbies-section" style={{ display: "flex", gap: 28, alignItems: "flex-start", marginBottom: 28 }}>
         <div style={{ display: "flex", flexDirection: "column", gap: 12, flexShrink: 0 }}>
           <div style={{ ...picPlaceholder, overflow: "hidden", padding: 0 }}><img src="/hobbies/tennis.jpg" alt="Tennis" style={{ width: "100%", height: "100%", objectFit: "cover" }} /></div>
           <div style={{ ...picPlaceholder, overflow: "hidden", padding: 0 }}><img src="/hobbies/odissi.png" alt="Odissi" style={{ width: "100%", height: "100%", objectFit: "cover" }} /></div>
@@ -587,6 +603,7 @@ function CVModal({ onClose }) {
 export default function Portfolio() {
   const [page, setPage] = useState("home");
   const [showCV, setShowCV] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const pages = { home: HomePage, projects: ProjectsPage, experience: ExperiencePage, education: EducationPage, hobbies: HobbiesPage, contact: ContactPage };
   const Page = pages[page] || HomePage;
@@ -602,9 +619,50 @@ export default function Portfolio() {
         ::-webkit-scrollbar-track { background: ${c.bg}; }
         ::-webkit-scrollbar-thumb { background: rgba(201,169,110,0.2); border-radius: 2px; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .main-content { margin-left: 220px; min-height: 100vh; padding: 36px 48px 56px; font-size: 13px; }
+
+        /* Scale everything with a base font approach */
+        .main-content h2 { font-size: clamp(22px, 3.5vw, 28px) !important; }
+        .main-content h3 { font-size: clamp(16px, 2.5vw, 19px) !important; }
+        .main-content p { font-size: clamp(12px, 1.6vw, 13px) !important; }
+
+        @media (max-width: 1200px) {
+          .main-content { padding: 36px 36px 48px; }
+          .main-content p { line-height: 1.7 !important; }
+        }
+
+        @media (max-width: 1024px) {
+          .sidebar { transform: translateX(-100%); }
+          .sidebar.sidebar-open { transform: translateX(0); }
+          .mobile-menu-btn { display: flex !important; }
+          .mobile-overlay { display: block !important; }
+          .main-content { margin-left: 0 !important; padding: 60px 28px 48px !important; font-size: 12px; }
+          .main-content h2 { font-size: clamp(20px, 3vw, 26px) !important; margin-bottom: 20px !important; }
+          .main-content h3 { font-size: clamp(15px, 2.2vw, 18px) !important; }
+        }
+
+        @media (max-width: 768px) {
+          .main-content { padding: 56px 20px 40px !important; font-size: 12px; }
+          .main-content h2 { font-size: clamp(18px, 4vw, 24px) !important; }
+          .home-about-grid { flex-direction: column !important; gap: 24px !important; }
+          .home-about-grid > div:first-child { align-self: center; width: 120px !important; height: 120px !important; }
+          .exp-grid { grid-template-columns: 1fr !important; gap: 8px !important; }
+          .hobbies-section { flex-direction: column !important; gap: 20px !important; }
+          .hobbies-section > div:first-child { flex-direction: row !important; gap: 8px !important; }
+          .hobbies-section > div:first-child > div { width: 70px !important; height: 70px !important; }
+        }
+
+        @media (max-width: 480px) {
+          .main-content { padding: 52px 14px 28px !important; font-size: 11px; }
+          .main-content h2 { font-size: 18px !important; }
+          .main-content h3 { font-size: 15px !important; }
+          .main-content p { font-size: 11px !important; }
+          .home-about-grid > div:first-child { width: 100px !important; height: 100px !important; }
+        }
       `}</style>
-      <Sidebar active={page} onNavigate={setPage} onCVClick={() => setShowCV(true)} />
-      <main style={{ marginLeft: 250, minHeight: "100vh", padding: "36px 48px 56px" }}>
+      <Sidebar active={page} onNavigate={setPage} onCVClick={() => setShowCV(true)} mobileOpen={mobileOpen} onToggleMobile={setMobileOpen} />
+      <main className="main-content">
         <Page />
         <div style={{ marginTop: 72, paddingTop: 20, borderTop: `1px solid ${c.border}`, fontFamily: f.mono, fontSize: 9, color: c.faint, letterSpacing: "1px" }}>
           © 2026 Modhura Das — Designed with intention
